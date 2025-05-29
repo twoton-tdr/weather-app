@@ -1,2 +1,3 @@
-console.log("Greetings");
-//# sourceMappingURL=main.js.map
+import { apifetch } from "./script/api";
+
+apifetch();
