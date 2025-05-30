@@ -1,25 +1,10 @@
 import { fetchDetails } from "./script/api";
+import { createLanding } from "./script/landing";
+import { createWeatherCard } from "./script/weatherCard";
+import "./style/style.css";
 
 // fetchDetails("london");
 
-const button = document.querySelector("#sub");
-const inputfield = document.querySelector("#loc");
+createLanding(); 
 
-
-
-inputfield.addEventListener("input",()=>{
-    if(inputfield.value){
-        inputfield.setCustomValidity("");
-    }
-})
-button.addEventListener("click",()=>{
-
-    if(inputfield.value == ""){
-        inputfield.setCustomValidity("Enter a valid address!");
-        inputfield.reportValidity();
-    }
-    else{
-        fetchDetails(inputfield.value)
-        inputfield.setCustomValidity("");
-    }
-})
+// createWeatherCard();

@@ -1,9 +1,15 @@
 async function fetchDetails(location){
     const weatherDetails = await fetchWeather(location);
 
+    // fetches gif from giffy only if fetch weather is successful
     if(!weatherDetails.isError){
-        console.log(weatherDetails)
+        
         const gif = await fetchGif(weatherDetails.icon);
+        return [weatherDetails,gif];
+    }
+    else{
+        return [];
+        // back to the search page with popup message (error code)
     }
 
 }
@@ -38,7 +44,7 @@ async function fetchGif(icon) {
         const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${apiKey}&s=${icon}`,{mode: 'cors'});
         const gifData = await response.json();
         const address = gifData.data.images.original.url;
-        console.log(address);
+        return address;
     }
     catch(err){
         alert(err)
@@ -51,14 +57,15 @@ function F2C(fahrenheit){
     return celsius;
 }
 function cleanWeatherData(data){
-
+    console.log(data)
     const TODAY = data.days[0];
     
     const weatherObject = {
-        location: data.resolvedAddress,
+        location: data.address,
         time: data.currentConditions.datetime,
         date: TODAY.datetime,
         desc: data.description,
+        condition: data.currentConditions.conditions,
         temp: F2C(data.currentConditions.temp),
         icon: data.currentConditions.icon,
     }
