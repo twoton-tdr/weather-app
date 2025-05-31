@@ -8,7 +8,7 @@ async function fetchDetails(location){
         return [weatherDetails,gif];
     }
     else{
-        return [];
+        return weatherDetails;
         // back to the search page with popup message (error code)
     }
 
@@ -18,7 +18,6 @@ async function fetchWeather(location){
     const apiKey = "HNATZBSWKVA7UFH2PYCS2LW55";
     try{
             const response =await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${apiKey}`,{mode: 'cors'});
-    
             if(!response.ok){
                 const error = new Error("Bad Request");
                 error.status = response.status;
@@ -32,6 +31,7 @@ async function fetchWeather(location){
             
     }
     catch(error){
+        error.isError = true;
         return error;
     }
 

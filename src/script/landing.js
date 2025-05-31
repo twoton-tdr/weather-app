@@ -41,6 +41,11 @@ async function createLanding() {
     iconSpan.classList.add("fluent--search-12-filled");
     button.appendChild(iconSpan);
 
+    const loadIcon = document.createElement("span");
+    loadIcon.classList.add("eos-icons--loading");
+    form.appendChild(loadIcon);
+    loadIcon.style.display = "none"
+
     inputfield.addEventListener("input",()=>{
     if(inputfield.value){
         inputfield.setCustomValidity("");
@@ -53,19 +58,22 @@ async function createLanding() {
         inputfield.reportValidity();
     }
     else{
-        console.log("fetching")
+        loadIcon.style.display = "Block";
         const results = await fetchDetails(inputfield.value);
-        console.log(results)
-        if(results.length){
+        loadIcon.style.display = "none";
+
+        if(!results.isError){    
             createWeatherCard(...results);
         }
-        else{
-            console.log("try again")
+        else if(results.status == 400){
+            inputfield.setCustomValidity("Address not found");
+            inputfield.reportValidity();
         }
-        inputfield.setCustomValidity("");
+        else{
+            alert("Something went wrong");
+            createLanding();
+        }
     }
-
-    
     })
 
 }
