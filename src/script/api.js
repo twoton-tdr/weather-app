@@ -41,7 +41,7 @@ async function fetchGif(icon) {
     const apiKey = "g7N1PdjOtPO2ChXiLc7YmVNLb58VXcr4";
 
     try{
-        const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${apiKey}&s=${icon}`,{mode: 'cors'});
+        const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${apiKey}&s=${icon} weather`,{mode: 'cors'});
         const gifData = await response.json();
         const address = gifData.data.images.original.url;
         return address;

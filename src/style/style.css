@@ -3,7 +3,7 @@
 }
 .heading {
     font-size: 48px;
-    font-weight: 400;
+    font-weight: 800;
     font-style: normal;
 }
 body{
@@ -34,8 +34,12 @@ form{
     border: none;
     padding: 20px;
     font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
+.search-box input::placeholder{
+    color: rgba(0, 0, 0, 0.701);
+}
 form label{
     font-size: 24px;
 }
@@ -44,7 +48,7 @@ form label{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5);
     border: none;
 }
 
@@ -60,6 +64,7 @@ form label{
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
+  color: rgba(0, 0, 0, 0.701);
 }
 
 .content{
@@ -102,6 +107,7 @@ img{
 
 /* loading icon */
 .eos-icons--loading {
+  color: rgb(227, 254, 186);
   margin: 20px;
   padding: 28px;  
   display: inline-block;
@@ -115,4 +121,12 @@ img{
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
+}
+
+body{
+    background: url("../img/pexels-simon73-1183099.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
