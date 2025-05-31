@@ -110,6 +110,7 @@ img{
     font-size: 20px;
 }
 #temp-holder{
+    padding: 10px;
     font-weight: 900;
     font-size: 32px;
 }

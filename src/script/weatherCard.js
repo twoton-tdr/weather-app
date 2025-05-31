@@ -28,7 +28,7 @@ function createWeatherCard(weatherObject,gif) {
 
     const tempHolder = document.createElement("div");
     tempHolder.id = "temp-holder";
-    tempHolder.textContent = weatherObject.temp;
+    tempHolder.textContent = weatherObject.temp+"°C";
     weatherDetails.appendChild(tempHolder);
 
     const descHolder = document.createElement("div");
